@@ -1,0 +1,27 @@
+/*============================================================================================================
+    리셋
+============================================================================================================*/
+*{outline:0!important; box-sizing:border-box;}
+html,body,h1,h2,h3,h4,h5,h6,div,p,blockquote,pre,code,address,ul,ol,li,menu,nav,section,article,aside,dl,dt,dd,table,thead,tbody,tfoot,label,caption,th,td,form,fieldset,legend,hr,input,button,textarea,object,figure,figcaption {margin:0;padding:0;}
+html,body{width:100%;}
+html{font-family:sans-serif;}
+body{width:100%;background:#fff;min-width:320px;-ms-text-size-adjust:100%;text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;word-break:keep-all;}
+body,input,select,textarea,button{border:none;font-size:12px;font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;color:#000;}
+ul,ol,li{list-style:none;}
+table{width:100%;border-spacing:0;border-collapse:collapse;}
+img,fieldset{width:100%;border:0;}
+address,cite,code,em{font-style:normal;font-weight:normal;}
+label,img,input,select,textarea,button{vertical-align:middle;}
+.hide,caption,legend{line-height:0;font-size:1px;overflow:hidden;}
+hr{display:none;}
+main,header,section,nav,footer,aside,article,figure{display:block;}
+a{color:#000;text-decoration:none;}
+img {width:auto; max-width:100%;}
+/* Selection */
+::-moz-selection {background:rgba(255,255,255,0.5);}
+::selection {background:rgba(255,255,255,0.5);}
+
+/* Kakao Map */
+.root_daum_roughmap {width:100%!important; border-radius:0!important; border:none!important; padding:0!important;}
+.root_daum_roughmap .wrap_controllers {display:none!important;}
+
