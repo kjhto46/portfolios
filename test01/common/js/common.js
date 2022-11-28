@@ -7,7 +7,7 @@
             if ($agent.match($agents[ag])) {
                 $(document.body).addClass(String(RegExp.$1 + RegExp.$2).replace(/opr/, 'opera').replace(/trident/, 'msie').replace(/\s+/, ''));
                 break;
-            }
+            } 
         }
     });
 })();

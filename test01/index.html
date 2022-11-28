@@ -24,40 +24,97 @@
   </ul>
 </header>
 
-<body>
-  <section class="section01"></section>
-  <section class="section02"></section>
+  <body>
+    <section class="section02">
+      <ul class="projectList">
+        <li>
+          <figure>
+            <img src="element.jpg" alt="추가전 내용" />
+          </figure>
+          <h2>추가전 내용</h2>
+          <p>추가전 내용</p>
+          <a href="">링크 이동</a>
+        </li>
+        <li>
+          <figure>
+            <img src="element.jpg" alt="추가전 내용" />
+          </figure>
+          <h2>추가전 내용</h2>
+          <p>추가전 내용</p>
+          <a href="">링크 이동</a>
+        </li>
+      </ul>
+      <button type="button" id="addBtn">더보기</button>
 
-  <section class="section03">
-    <div class="inner"></div>
-    <ul class="projectList">
-      <li>
-        <figure>
-          <img src="element.jpg" alt="추가전 내용" />
-        </figure>
-        <h2>추가전 내용</h2>
-        <p>추가전 내용</p>
-        <a href="">링크 이동</a>
-      </li>
-      <li>
-        <figure>
-          <img src="element.jpg" alt="추가전 내용" />
-        </figure>
-        <h2>추가전 내용</h2>
-        <p>추가전 내용</p>
-        <a href="">링크 이동</a>
-      </li>
-    </ul>
-    <button type="button" id="addBtn">더보기</button>
-  </section>
+      <script type="module">
+        import dataName from "./ajax.js";
 
-  <section class="section03">
-    <div class="contactForm">
-      <form id="emailForm" class="gform" method="POST"
-        action="https://script.google.com/macros/s/AKfycbxO5vlJUOa9UoljaKBxmeVAsC-uG9cugK0NHG8zApDyd642wZEtn5wGTdLK1v2pad0axg/exec">
-        <input type="text" class="form-control" id="senderEmail" name="senderEmail" placeholder="Your Email" required />
-        <input type="text" class="form-control" id="senderName" name="senderName" placeholder="Your Name" required />
-        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message"></textarea>
+        let page = 0;
+        const pageSize = 6;
+        const jsonData = [...dataName]; // 불러온 JSON 데이터
+        console.log("jsonData: ", jsonData);
+
+        function onAddList() {
+          if (Math.ceil(jsonData.length / pageSize) < page + 1) {
+            return;
+          }
+
+          if (Math.ceil(jsonData.length / pageSize) === 0) {
+            return;
+          }
+
+          jsonData.forEach((element, index) => {
+            if (index >= page * 6 && (page + 1) * 6 > index) {
+              document.querySelector(".projectList").innerHTML += `
+                    <li>
+                        <figure>
+                            <img src="${element.img}" alt="${element.subject}">
+                        </figure>
+                        <h2>${element.subject}${index}</h2>
+                        <p>${element.subtxt}</p>
+                        <a href="${element.link}">링크 이동</a>
+                    </li>
+                `;
+            }
+          });
+          page += 1;
+        }
+
+        document.getElementById("addBtn").addEventListener("click", onAddList);
+      </script>
+    </section>
+
+    <section class="section03">
+      <div class="contactForm">
+        <form
+          id="emailForm"
+          class="gform"
+          method="POST"
+          action="https://script.google.com/macros/s/AKfycbxO5vlJUOa9UoljaKBxmeVAsC-uG9cugK0NHG8zApDyd642wZEtn5wGTdLK1v2pad0axg/exec"
+        >
+          <input
+            type="text"
+            class="form-control"
+            id="senderEmail"
+            name="senderEmail"
+            placeholder="Your Email"
+            required
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="senderName"
+            name="senderName"
+            placeholder="Your Name"
+            required
+          />
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Your Message"
+          ></textarea>
 
         <script type="text/javascript">
           (function () {
