@@ -1,5 +1,4 @@
-export default [
-  {
+export default [{
     img: "01.jpg",
     subject: "제목입니다",
     subtxt: "내용입니다",
