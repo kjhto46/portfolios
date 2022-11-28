@@ -3,7 +3,7 @@ import dataName from "./ajax.js";
 let page = 0;
 const pageSize = 6;
 const jsonData = [...dataName]; // 불러온 JSON 데이터
-console.log("jsonData: ", jsonData);
+// console.log("jsonData: ", jsonData);
 
 function onAddList() {
     if (Math.ceil(jsonData.length / pageSize) < page + 1) {
