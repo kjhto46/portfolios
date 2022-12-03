@@ -1,20 +1,24 @@
 import dataName from "./ajax.js";
 // project 팝업
 $(".projectList > li a").on({ // 팝업 열기
-    "click": function (e) {
-        var src = $(this).data("src");
-        var workpercent = $(this).data("wpercent");
-        var stext = $(this).data("stext");
-        var sdate = $(this).data("sdate");
-        e.preventDefault();
-        $("body").addClass("pop_on"); // body와 pop_wrap의 이중 스크롤 제거
-        $(".pop_wrap").addClass("on");
-        $(".pop_wrap .goWebsite").attr("href", src);
-        $(".pop_wrap .percent").text(workpercent);
-        $(".pop_wrap .tit").text(stext);
-        $(".pop_wrap .tdate").text(sdate);
-    }
+    "click": onProjectListPopup
 });
+
+function onProjectListPopup(e) {
+    var src = $(this).data("src");
+    var workpercent = $(this).data("wpercent");
+    var stext = $(this).data("stext");
+    var sdate = $(this).data("sdate");
+    console.log('workpercent: ', workpercent);
+    console.log('src: ', src);
+    e.preventDefault();
+    $("body").addClass("pop_on"); // body와 pop_wrap의 이중 스크롤 제거
+    $(".pop_wrap").addClass("on");
+    $(".pop_wrap .goWebsite").attr("href", src);
+    $(".pop_wrap .percent").text(workpercent);
+    $(".pop_wrap .tit").text(stext);
+    $(".pop_wrap .tdate").text(sdate);
+}
 
 $(".ibtn_close").on({ // 팝업 닫기
     "click": function (e) {
@@ -54,6 +58,12 @@ function onAddList() {
         }
     });
     page += 1;
+    $(".projectList > li a").off({ // 팝업 열기
+        "click": onProjectListPopup
+    });
+    $(".projectList > li a").on({ // 팝업 열기
+        "click": onProjectListPopup
+    });
 }
 
 document.getElementById("addBtn").addEventListener("click", onAddList);
