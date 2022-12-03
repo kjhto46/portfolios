@@ -22,9 +22,6 @@ $(window).scroll(function () {
     };
 });
 
-
-
-
 // 폼메일
 (function () {
     // get all data in form and return object
