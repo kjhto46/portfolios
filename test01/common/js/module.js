@@ -29,21 +29,23 @@ $(".ibtn_close").on({ // 팝업 닫기
 });
 
 let page = 0;
-const pageSize = 6;
+const pageSize = 4;
 const jsonData = [...dataName]; // 불러온 JSON 데이터
 // console.log("jsonData: ", jsonData);
 
 function onAddList() {
     if (Math.ceil(jsonData.length / pageSize) < page + 1) {
+        document.getElementById("addBtn").style.display = "none";
         return;
     }
 
     if (Math.ceil(jsonData.length / pageSize) === 0) {
+        document.getElementById("addBtn").style.display = "none";
         return;
     }
 
     jsonData.forEach((element, index) => {
-        if (index >= page * 6 && (page + 1) * 6 > index) {
+        if (index >= page * pageSize && (page + 1) * pageSize > index) {
             document.querySelector(".projectList").innerHTML += `
                     <li>
                         <a href="javascript:void(0);" data-src="${element.link}" data-stext="${element.subject}" data-sdate="${element.subtxt}" data-wpercent="${element.percent}">
